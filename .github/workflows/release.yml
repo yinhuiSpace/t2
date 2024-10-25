@@ -13,14 +13,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Query version number
+      - name: 查询版本号
         id: get_version
         shell: bash
         run: |
           echo "using version tag ${GITHUB_REF:10}"
           echo ::set-output name=version::"${GITHUB_REF:10}"
 
-      - name: Create Release
+      - name: 创建版本
         id: create_release
         uses: actions/create-release@v1
         env:
@@ -63,7 +63,7 @@ jobs:
         with:
           version: latest
 
-      - name: Install rsw
+      - name: 下载 rsw
         run: cargo install rsw
 
       - name: 获取yarn缓存目录
@@ -87,20 +87,20 @@ jobs:
         with:
           releaseId: ${{ needs.create-release.outputs.RELEASE_UPLOAD_ID }}
 
-  updater:
-    runs-on: ubuntu-latest
-    needs: [create-release, build-tauri]
+  # updater:
+  #   runs-on: ubuntu-latest
+  #   needs: [create-release, build-tauri]
 
-    steps:
-      - uses: actions/checkout@v2
-      - run: yarn
-      - run: yarn updater
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - run: yarn
+  #     - run: yarn upgrade
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Deploy install.json
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./updater
-          force_orphan: true
+  #     - name: 部署 install.json
+  #       uses: peaceiris/actions-gh-pages@v3
+  #       with:
+  #         github_token: ${{ secrets.GITHUB_TOKEN }}
+  #         publish_dir: ./updater
+  #         force_orphan: true
