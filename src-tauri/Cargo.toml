@@ -5,21 +5,27 @@ description = "A Tauri App"
 authors = ["you"]
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[profile.dev]
+incremental = true
 
-[lib]
-# The `_lib` suffix may seem redundant but it is necessary
-# to make the lib name unique and wouldn't conflict with the bin name.
-# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
-name = "t2_lib"
-crate-type = ["staticlib", "cdylib", "rlib"]
+[build]
+rustc-wrapper = "/path/to/sccache"
+rustflags = ["-Z", "threads=8"]
+
+[target.x86_64-pc-windows-msvc]
+rustflags = ["-Ctarget-feature=+crt-static"]
 
 [build-dependencies]
 tauri-build = { version = "2", features = [] }
 
 [dependencies]
+sccache = "0.8.2"
 tauri = { version = "2", features = [] }
 tauri-plugin-shell = "2"
-serde = { version = "1", features = ["derive"] }
 serde_json = "1"
+serde = "1.0.213"
+sysinfo = "0.32.0"
+battery = "0.7.8"
+window-vibrancy = "0.5.2"
+window-shadows = "0.2.2"
 
