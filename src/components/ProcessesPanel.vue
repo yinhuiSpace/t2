@@ -16,7 +16,7 @@ async function processInfo() {
         const ms = [];
         res.forEach(e => {
             ns.push(e.pid + ":" + e.name);
-            ms.push((e.mem/ (1024 * 1024 * 1024)).toFixed(2))
+            ms.push((e.mem / (1024 * 1024 * 1024)).toFixed(2))
         });
         processChart.value?.setOption({
             yAxis: {
@@ -79,18 +79,22 @@ onMounted(() => {
 </script>
 
 <template>
-    <el-card style="width:100%" shadow="always">
-        <template #header>
-            <div class="card-header">
-                <span>进程</span>
-            </div>
-        </template>
-        <el-row>
-            <el-col>
-                <v-chart ref="processChart" :manual-update="true" autoresize class="chart" />
-            </el-col>
-        </el-row>
-    </el-card>
+    <el-row>
+        <el-col>
+            <el-card style="width:100%" shadow="always">
+                <template #header>
+                    <div class="card-header">
+                        <span>进程</span>
+                    </div>
+                </template>
+                <el-row>
+                    <el-col>
+                        <v-chart ref="processChart" :manual-update="true" autoresize class="chart" />
+                    </el-col>
+                </el-row>
+            </el-card>
+        </el-col>
+    </el-row>
     <!-- <el-row>
         <el-col>
             <el-table :data="processes" height="500" stripe style="width: 100%"

@@ -9,9 +9,7 @@ import BatteryPanel from "./BatteryPanel.vue";
 </script>
 
 <template>
-    <el-row>
-        <SysPanel />
-    </el-row>
+    <SysPanel />
     <el-row :gutter="8">
         <el-col :span="12">
             <BatteryPanel />
@@ -25,16 +23,14 @@ import BatteryPanel from "./BatteryPanel.vue";
                     </div>
                     <NetPanel />
                 </template>
-                <!-- <v-chart class="chart" ref="payloadChart" :manual-update="true" autoresize /> -->
             </el-card>
         </el-col>
         <el-col :span="6">
             <CpuPanel />
         </el-col>
     </el-row>
-    <el-row>
-        <ProcessesPanel />
-    </el-row>
+    <DiskPanel />
+    <ProcessesPanel />
 </template>
 
 

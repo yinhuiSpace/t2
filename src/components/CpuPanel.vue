@@ -53,7 +53,7 @@ const option = {
 };
 
 async function cpuInfo() {
-    cpu.value = await invoke("cpu_info", {}).then((res) => {
+    await invoke("cpu_info", {}).then((res) => {
         const ns = [];
         const us = [];
         res.core_list.forEach(e => {
@@ -74,6 +74,7 @@ async function cpuInfo() {
             ]
         })
     });
+    cpu.value = await invoke("cpu_info", {});
     setTimeout(cpuInfo, 1000);
 }
 onMounted(() => {
@@ -93,6 +94,9 @@ onMounted(() => {
                     <el-col :span="8">
                         <el-statistic title="cpu数量" :value="cpu.core_cnt" />
                     </el-col>
+                    <!-- <el-col :span="8">
+                        <el-statistic title="频率" :value="cpu.frequency" />
+                    </el-col> -->
                     <el-col :span="8">
                         <el-statistic title="使用率" :value="cpu.global_usage" />
                     </el-col>
