@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "系统监测器",
+  "productName": "monitor",
   "version": "0.1.0",
   "identifier": "com.t2.app",
   "build": {
