@@ -14,3 +14,9 @@
 图形化，动态化展示，美观实用
 
 ## 软件截图
+
+![image-20241103115508286](https://raw.githubusercontent.com/yinhuiSpace/picgoimg/main/img/202411031155753.png)
+
+![image-20241103115527192](https://raw.githubusercontent.com/yinhuiSpace/picgoimg/main/img/202411031155352.png)
+
+![image-20241103115559484](https://raw.githubusercontent.com/yinhuiSpace/picgoimg/main/img/202411031155618.png)
